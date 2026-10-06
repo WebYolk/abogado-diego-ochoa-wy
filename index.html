@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abg. Diego Ochoa | Asesoría & Patrocinio Legal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    
+    <div id="site-wrapper" class="site-wrapper">
+        
+        <!-- CURSOR PREMIUM -->
+        <div class="cursor-dot"></div>
+        <div class="cursor-outline"></div>
+
+        <!-- BARRA DE LECTURA -->
+        <div class="reading-progress-container"><div class="reading-progress-bar" id="progress-bar"></div></div>
+
+        <!-- NAVBAR -->
+        <nav class="navbar" id="navbar">
+            <div class="nav-content">
+                <a href="#inicio" class="logo-box hover-target">
+                    <img src="img/logo.jpeg" alt="Logo Abg. Diego Ochoa" class="logo-img">
+                    <span class="logo">Abg. Diego Ochoa<span class="punto">.</span></span>
+                </a>
+                <ul class="nav-links">
+                    <li><a href="#inicio" class="hover-target">Perfil</a></li>
+                    <li><a href="#areas" class="hover-target">Especialidades</a></li>
+                    <li><a href="#experiencia" class="hover-target">Trayectoria</a></li>
+                    <li><a href="#galeria" class="hover-target">Galería</a></li>
+                    <li><a href="#contacto-web" class="hover-target">Contacto</a></li>
+                    <li><button id="theme-toggle" class="theme-btn hover-target"><i class="fas fa-moon"></i></button></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- HERO SECTION -->
+        <header id="inicio" class="hero-section fade-in">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+
+            <div class="hero-content">
+                <span class="badge"><i class="fas fa-balance-scale"></i> Abogado de los Tribunales</span>
+                <h1 class="hero-title">
+                    Garantizando tu tranquilidad con <br>
+                    <span class="highlight-gold" id="typed-text"></span><span class="cursor">|</span>
+                </h1>
+                <p class="hero-text">Abogado de los Tribunales y Juzgados de la República y Maestrante en Derecho Penal. Patrocinio y asesoría jurídica integral en derecho penal, familia, laboral, civil y constitucional.</p>
+                <div class="hero-buttons">
+                    <a href="https://wa.me/593989639391" target="_blank" class="btn btn-primary btn-magnetic hover-target"><i class="fab fa-whatsapp"></i> Agendar Consulta</a>
+                    <a href="#contacto-web" class="btn btn-outline btn-magnetic hover-target"><i class="fas fa-envelope"></i> Ver Contacto</a>
+                </div>
+            </div>
+            
+            <div class="hero-image-box">
+                <div class="flip-card float-anim hover-target">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="img/foto-p.jpeg" alt="Abg. Diego Ochoa Ojeda" class="hero-img">
+                        </div>
+                        <div class="flip-card-back">
+                            <img src="img/logo.jpeg" alt="Logo Oficial" class="back-logo">
+                            <h3>Abg. Diego Ochoa</h3>
+                            <p>Defensa Penal & Patrocinio Legal</p>
+                            <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 5px;">Quito, Ecuador</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- HABILIDADES / ÁREAS DE PRÁCTICA -->
+        <section id="areas" class="section bg-alt fade-in">
+            <h2 class="section-heading">Especialidades Legales <span class="subtitle-hint">(Haz clic en cada etiqueta para ver detalles)</span></h2>
+            <div class="skills-grid">
+                <div class="skill-card hover-target">
+                    <div class="skill-icon"><i class="fas fa-gavel"></i></div>
+                    <h3>Derecho Penal</h3>
+                    <div class="tags-container">
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Defensa Penal & Constitucional', 'fas fa-shield-alt', 'Maestrante en Derecho Penal. Patrocinio en delitos penales, contravenciones y procesos constitucionales de libertad.')">Defensa Penal</span>
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Tránsito & Accidentología', 'fas fa-car-crash', 'Capacitado en derecho aplicado al tránsito, peritajes y juzgamiento de accidentes.')">Tránsito</span>
+                    </div>
+                </div>
+                <div class="skill-card hover-target">
+                    <div class="skill-icon"><i class="fas fa-users"></i></div>
+                    <h3>Familia & Civil</h3>
+                    <div class="tags-container">
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Derecho de Familia & Embargos', 'fas fa-heart', 'Pensiones alimenticias, divorcios, tenencia y ejecución de embargos en la materia.')">Familia & Alimentos</span>
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Derecho Civil & Cobranzas', 'fas fa-file-contract', 'Juicios ejecutivos, recuperación de deudas, daños morales y demandas contractuales.')">Civil & Contratos</span>
+                    </div>
+                </div>
+                <div class="skill-card hover-target">
+                    <div class="skill-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Laboral & Mediación</h3>
+                    <div class="tags-container">
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Derecho Laboral', 'fas fa-user-tie', 'Manejo de la prueba en materia laboral, desahucios, despidos intempestivos y actas de finiquito.')">Laboral</span>
+                        <span class="tag interactive-tag hover-target" onclick="abrirModalSkill('Mediación Acreditada', 'fas fa-handshake', 'Mediador avalado académicamente por la UIDE. Solución pacífica de controversias.')">Mediación UIDE</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- EXPERIENCIA INTERACTIVA -->
+        <section id="experiencia" class="section fade-in">
+            <h2 class="section-heading">Trayectoria Profesional <span class="subtitle-hint">(Presiona las tarjetas para abrir el desglose)</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Abogado Independiente en Libre Ejercicio', 'INTILAW – Estudio Jurídico', 'Mayo 2023 - Presente', '<ul><li>Asesoría y patrocinio legal en derecho constitucional, familia, civil, penal, laboral y administrativo.</li><li>Realización de escritos legales, demandas, contestaciones e impugnaciones.</li></ul>')">
+                        <span class="date-badge">MAYO 2023 - PRESENTE</span>
+                        <h3>Abogado Independiente / Libre Ejercicio</h3>
+                        <h4>INTILAW – Estudio Jurídico <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Comisario Nacional de Policía', 'Ministerio de Gobierno (Quito)', 'Febrero 2024 - Junio 2024', '<ul><li>Coordinación y planificación de operativos de seguridad con autoridades públicas en Quito.</li><li>Instructor y director de audiencias de procedimiento administrativo sancionador.</li><li>Inspección de bienes inmuebles por presuntos asentamientos ilegales y control de eventos públicos.</li></ul>')">
+                        <span class="date-badge">FEB 2024 - JUN 2024</span>
+                        <h3>Comisario Nacional de Policía</h3>
+                        <h4>Ministerio de Gobierno <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Asistente Legal & Consultor', 'Abogada Robsana Cevallos', 'Octubre 2020 - Marzo 2023', '<ul><li>Elaboración de demandas, contestaciones e impugnaciones en materia laboral, familia y constitucional.</li><li>Coordinación directa con clientes, gestión de archivo activo/pasivo y agenda judicial.</li></ul>')">
+                        <span class="date-badge">OCT 2020 - MAR 2023</span>
+                        <h3>Asistente Legal & Asesor</h3>
+                        <h4>Estudio Jurídico Dra. Robsana Cevallos <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Pasante Judicial', 'Ron & Abogados Asociados', 'Mayo 2018 - Mayo 2019', '<ul><li>Ingreso de escritos en Unidades Judiciales y administrativas.</li><li>Coordinación de diligencias legales y atención preliminar al usuario.</li></ul>')">
+                        <span class="date-badge">MAYO 2018 - MAYO 2019</span>
+                        <h3>Pasante Legal</h3>
+                        <h4>Ron & Abogados Asociados <i class="fas fa-external-link-alt" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FORMACIÓN ACADÉMICA Y CURSOS -->
+        <section class="section bg-alt fade-in">
+            <h2 class="section-heading">Formación & Certificaciones <span class="subtitle-hint">(Títulos y capacitación continua)</span></h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Maestría en Derecho Penal', 'Universidad Bolivariana del Ecuador', 'En Curso (Cuarto Nivel)', '<ul><li>Especialización avanzada en litigación penal, dogmática procesal y teoría del delito.</li></ul>')">
+                        <span class="date-badge">POSTGRADO EN CURSO</span>
+                        <h3>Maestrante de Derecho Penal</h3>
+                        <h4>Universidad Bolivariana del Ecuador <i class="fas fa-graduation-cap" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Abogado de los Tribunales y Juzgados', 'Universidad Central del Ecuador', 'Registro SENESCYT 1005-2023-2655096', '<ul><li>Grado académico oficial. Registro SENESCYT: 1005-2023-2655096.</li><li>Formación integral en consultorios jurídicos e investigación constitucional.</li></ul>')">
+                        <span class="date-badge">TERCER NIVEL</span>
+                        <h3>Abogado de los Tribunales de la República</h3>
+                        <h4>Universidad Central del Ecuador <i class="fas fa-graduation-cap" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Mediador Acreditado', 'Centro Jóvenes y Justicia / UIDE', 'Acreditación Oficial', '<ul><li>Avalado académicamente por la Universidad Internacional del Ecuador (UIDE).</li><li>Capacitado en solución alternativa de conflictos.</li></ul>')">
+                        <span class="date-badge">ACREDITACIÓN</span>
+                        <h3>Mediador de Controversias</h3>
+                        <h4>UIDE & Centro "Jóvenes y Justicia" <i class="fas fa-certificate" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Cursos y Seminarios de Actualización', 'Formación Continua', '2021 - 2025', '<ul><li><b>Curso de Violación y Abuso Sexual (50 hrs)</b> - PAX Escuela de Derecho (May 2025)</li><li><b>Litigación oral y habilidades jurídicas</b> - Ergo Académico (Feb 2025)</li><li><b>El Embargo y su ejecución en familia</b> - Escuela de la Función Judicial (Oct 2024)</li><li><b>La prueba en materia laboral</b> - Escuela de la Función Judicial (Jul 2024)</li><li><b>Defensa Penal y Constitucional</b> - Org. Universitaria de Derecho (Dic 2022)</li><li><b>Derecho procesal civil &quot;Juicio ejecutivo&quot;</b> - SERCAFP (Oct 2022)</li><li><b>Derecho Penal Aplicado Al Tránsito</b> - IUS Centro de Capacitación (Sep 2022)</li><li><b>I Jornada De Derecho Constitucional</b> - Consultorios Jurídicos UCE (Sep 2021)</li></ul>')">
+                        <span class="date-badge">2021 - 2025</span>
+                        <h3>Actualización Jurídica y Seminarios</h3>
+                        <h4>Múltiples Instituciones Académicas <i class="fas fa-book" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-content interactive clickable hover-target" onclick="abrirModalTimeline('Bachiller en Ciencias Generales', 'Colegio Juan Pío Montúfar', 'Educación Secundaria', '<ul><li>Título de Bachiller en Ciencias Generales.</li></ul>')">
+                        <span class="date-badge">SECUNDARIA</span>
+                        <h3>Bachiller en Ciencias Generales</h3>
+                        <h4>Colegio "Juan Pío Montúfar" <i class="fas fa-school" style="font-size: 0.8rem;"></i></h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GALERÍA SLIDER CENTRADO -->
+        <section id="galeria" class="section fade-in">
+            <h2 class="section-heading">Galería <span class="subtitle-hint">(Usa las flechas para ver más)</span></h2>
+            
+            <div class="slider-container">
+                <button class="slider-btn prev hover-target" id="sliderPrev"><i class="fas fa-chevron-left"></i></button>
+                
+                <div class="slider-wrapper">
+                    <div class="slider-track" id="sliderTrack">
+                        <img src="img/foto1.png" alt="Galería 1" class="slider-img">
+                        <img src="img/foto2.jpeg" alt="Galería 2" class="slider-img">
+                        <img src="img/foto3.jpeg" alt="Galería 3" class="slider-img">
+                        <img src="img/foto4.jpeg" alt="Galería 4" class="slider-img">
+                    </div>
+                </div>
+
+                <button class="slider-btn next hover-target" id="sliderNext"><i class="fas fa-chevron-right"></i></button>
+            </div>
+        </section>
+
+        <!-- CONTACTO Y DIRECCIONES -->
+        <section id="contacto-web" class="section bg-alt fade-in">
+            <h2 class="section-heading">Información & Canales de Contacto</h2>
+            <div class="contact-web-grid">
+                <a href="https://wa.me/593989639391" target="_blank" class="contact-box hover-target">
+                    <i class="fab fa-whatsapp"></i>
+                    <h4>WhatsApp Directo</h4>
+                    <p>0989639391</p>
+                </a>
+                <a href="mailto:abg.diego.ochoa@hotmail.com" class="contact-box hover-target">
+                    <i class="fas fa-envelope"></i>
+                    <h4>Correo Electrónico</h4>
+                    <p>abg.diego.ochoa@hotmail.com</p>
+                </a>
+                <a href="https://www.google.com/maps/search/?api=1&query=Av.+Velasco+Ibarra,+La+Tola,+Quito,+Pichincha" target="_blank" class="contact-box hover-target">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h4>Residencia / Oficina</h4>
+                    <p>Pichincha, Quito - La Tola, Av. Velasco Ibarra</p>
+                </a>
+            </div>
+
+            <!-- REDES SOCIALES -->
+            <div style="max-width: 800px; margin: 3rem auto 0; text-align: center;">
+                <h3 style="font-size: 1.4rem; margin-bottom: 1.5rem; color: var(--text-main);">Sígueme en Redes Sociales</h3>
+                <div style="display: flex; justify-content: center; gap: 1.2rem; flex-wrap: wrap;">
+                    <a href="https://www.tiktok.com/@abgdiegoochoa?_r=1&_t=ZS-9AKuyi658Tq" target="_blank" class="btn btn-outline hover-target" style="border-radius: 30px;"><i class="fab fa-tiktok"></i> TikTok</a>
+                    <a href="https://www.facebook.com/share/18R6fKKf5v/?mibextid=wwXlfr" target="_blank" class="btn btn-outline hover-target" style="border-radius: 30px;"><i class="fab fa-facebook"></i> Facebook</a>
+                    <a href="https://www.instagram.com/alexander_ochoa_1997?stkn=MTRsMmp2ZmRxaXo4aw%3D%3D&utm_source=qr" target="_blank" class="btn btn-outline hover-target" style="border-radius: 30px;"><i class="fab fa-instagram"></i> Instagram</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CALL TO ACTION -->
+        <section class="cta-section fade-in">
+            <div class="cta-content">
+                <h2>¿Necesitas respaldo jurídico profesional?</h2>
+                <p>Protege tus derechos en materia penal, familiar, laboral y civil con asesoría directa y comprometida.</p>
+                <div class="cta-buttons">
+                    <a href="https://wa.me/593989639391" target="_blank" class="btn btn-primary btn-massive btn-magnetic hover-target"><i class="fab fa-whatsapp"></i> Contactar por WhatsApp</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2026 Abg. Diego Ochoa Ojeda. Todos los derechos reservados.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">Desarrollado por <strong>WebYolk</strong></p>
+        </footer>
+
+        <!-- MODALES DE HABILIDADES Y TRAYECTORIA -->
+        <div id="modalSkill" class="modal-overlay">
+            <div class="modal-box skill-modal-box hover-target">
+                <span class="close-modal hover-target" onclick="cerrarModalGeneral('modalSkill')">&times;</span>
+                <div class="skill-icon-large" id="skill-modal-icon"></div>
+                <h3 id="skill-modal-titulo" class="modal-titulo" style="text-align: center; margin-top: 15px;">Habilidad</h3>
+                <p id="skill-modal-desc" class="modal-desc" style="text-align: center; margin-top: 10px;">Explicación...</p>
+            </div>
+        </div>
+        <div id="modalTimeline" class="modal-overlay">
+            <div class="modal-box hover-target">
+                <span class="close-modal hover-target" onclick="cerrarModalGeneral('modalTimeline')">&times;</span>
+                <span id="timeline-modal-date" class="date-badge" style="display:inline-block; margin-bottom: 15px;">Fechas</span>
+                <h3 id="timeline-modal-titulo" class="modal-titulo">Puesto</h3>
+                <h4 id="timeline-modal-empresa" style="color: var(--accent); margin-bottom: 20px;">Empresa</h4>
+                <div id="timeline-modal-desc" class="modal-desc timeline-list"></div>
+            </div>
+        </div>
+
+        <a href="https://wa.me/593989639391" class="floating-btn hover-target" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
