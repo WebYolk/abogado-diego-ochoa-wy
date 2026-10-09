@@ -1,28 +1,39 @@
-// 1. CURSOR PERSONALIZADO Y MAGNÉTICO
+// 1. CURSOR PERSONALIZADO Y MAGNÉTICO (Optimizado)
 const cursorDot = document.querySelector('.cursor-dot');
 const cursorOutline = document.querySelector('.cursor-outline');
 const hoverTargets = document.querySelectorAll('.hover-target');
 const magneticBtns = document.querySelectorAll('.btn-magnetic');
 
-if(window.innerWidth > 768) {
+if (window.innerWidth > 768) {
+    let mouseX = 0, mouseY = 0;
+    let outlineX = 0, outlineY = 0;
+
     window.addEventListener('mousemove', (e) => {
-        const posX = e.clientX;
-        const posY = e.clientY;
-        if(cursorDot) {
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-        }
-        if(cursorOutline) {
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+
+        if (cursorDot) {
+            cursorDot.style.left = `${mouseX}px`;
+            cursorDot.style.top = `${mouseY}px`;
         }
     });
 
+    // Interpolación suave para el outline sin saturar la memoria
+    function animateCursor() {
+        outlineX += (mouseX - outlineX) * 0.15;
+        outlineY += (mouseY - outlineY) * 0.15;
+
+        if (cursorOutline) {
+            cursorOutline.style.left = `${outlineX}px`;
+            cursorOutline.style.top = `${outlineY}px`;
+        }
+        requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
     hoverTargets.forEach(target => {
-        target.addEventListener('mouseenter', () => { if(cursorOutline) cursorOutline.classList.add('cursor-hover'); });
-        target.addEventListener('mouseleave', () => { if(cursorOutline) cursorOutline.classList.remove('cursor-hover'); });
+        target.addEventListener('mouseenter', () => cursorOutline?.classList.add('cursor-hover'));
+        target.addEventListener('mouseleave', () => cursorOutline?.classList.remove('cursor-hover'));
     });
 
     magneticBtns.forEach(btn => {
@@ -38,7 +49,7 @@ if(window.innerWidth > 768) {
     });
 }
 
-// 2. NAVEGACIÓN DEL SLIDER DE FOTOS (CARRUSEL CENTRADO)
+// 2. NAVEGACIÓN DEL SLIDER
 const sliderTrack = document.getElementById('sliderTrack');
 const btnPrev = document.getElementById('sliderPrev');
 const btnNext = document.getElementById('sliderNext');
@@ -64,27 +75,28 @@ if (sliderTrack && btnPrev && btnNext) {
 }
 
 // 3. BARRA DE PROGRESO DE LECTURA
-window.onscroll = function() {
-    let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-    let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    let scrolled = (winScroll / height) * 100;
+window.addEventListener('scroll', () => {
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = (winScroll / height) * 100;
     const progressBar = document.getElementById("progress-bar");
-    if(progressBar) progressBar.style.width = scrolled + "%";
-};
+    if (progressBar) progressBar.style.width = `${scrolled}%`;
+});
 
 // 4. EFECTO MÁQUINA DE ESCRIBIR
 const textsToType = [
-    "defensa penal estratégica.",
-    "causas de familia y alimentos.",
-    "juicios laborales preventivos.",
-    "contratos y litigios civiles."
+    "defensa penal.",
+    "causas de familia.",
+    "juicios laborales.",
+    "litigios civiles."
 ];
 let textIndex = 0; let charIndex = 0; let isDeleting = false;
 const typedTextElement = document.getElementById("typed-text");
 
 function typeEffect() {
-    if(!typedTextElement) return;
+    if (!typedTextElement) return;
     const currentText = textsToType[textIndex];
+    
     if (isDeleting) {
         typedTextElement.textContent = currentText.substring(0, charIndex - 1);
         charIndex--;
@@ -92,36 +104,49 @@ function typeEffect() {
         typedTextElement.textContent = currentText.substring(0, charIndex + 1);
         charIndex++;
     }
+    
     let typeSpeed = isDeleting ? 40 : 80;
 
     if (!isDeleting && charIndex === currentText.length) {
-        typeSpeed = 2000; isDeleting = true;
+        typeSpeed = 2000; 
+        isDeleting = true;
     } else if (isDeleting && charIndex === 0) {
-        isDeleting = false; textIndex = (textIndex + 1) % textsToType.length; typeSpeed = 500;
+        isDeleting = false; 
+        textIndex = (textIndex + 1) % textsToType.length; 
+        typeSpeed = 500;
     }
     setTimeout(typeEffect, typeSpeed);
 }
-document.addEventListener("DOMContentLoaded", () => { if(typedTextElement) { setTimeout(typeEffect, 1000); } });
 
-// 5. MODO OSCURO / CLARO
+document.addEventListener("DOMContentLoaded", () => { 
+    if (typedTextElement) setTimeout(typeEffect, 1000); 
+});
+
+// 5. MODO OSCURO CON PERSISTENCIA
 const themeToggleBtn = document.getElementById('theme-toggle');
 const body = document.body;
-if(themeToggleBtn) {
+
+if (localStorage.getItem('theme') === 'dark') {
+    body.classList.add('dark-mode');
+    if (themeToggleBtn) themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+}
+
+if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
         body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            themeToggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            themeToggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
-        }
+        const isDark = body.classList.contains('dark-mode');
+        themeToggleBtn.innerHTML = isDark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+        localStorage.setItem('theme', isDark ? 'dark' : 'light');
     });
 }
 
 // 6. LÓGICA DE MODALES
 function cerrarModalGeneral(idModal) {
-    document.getElementById(idModal).classList.remove('active');
+    const modal = document.getElementById(idModal);
+    if (modal) modal.classList.remove('active');
     document.body.style.overflow = 'auto'; 
 }
+
 function abrirModalSkill(titulo, iconoClass, desc) {
     document.getElementById('skill-modal-titulo').innerText = titulo;
     document.getElementById('skill-modal-desc').innerText = desc;
@@ -129,6 +154,7 @@ function abrirModalSkill(titulo, iconoClass, desc) {
     document.getElementById('modalSkill').classList.add('active');
     document.body.style.overflow = 'hidden'; 
 }
+
 function abrirModalTimeline(puesto, empresa, fechas, descripcionHTML) {
     document.getElementById('timeline-modal-titulo').innerText = puesto;
     document.getElementById('timeline-modal-empresa').innerText = empresa;
@@ -137,6 +163,20 @@ function abrirModalTimeline(puesto, empresa, fechas, descripcionHTML) {
     document.getElementById('modalTimeline').classList.add('active');
     document.body.style.overflow = 'hidden'; 
 }
+
+window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+            cerrarModalGeneral(modal.id);
+        });
+    }
+});
+
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) cerrarModalGeneral(overlay.id);
+    });
+});
 
 // 7. ANIMACIONES SCROLL
 const observerOptions = { root: null, rootMargin: '0px', threshold: 0.15 };
@@ -148,4 +188,5 @@ const observer = new IntersectionObserver((entries, observer) => {
         }
     });
 }, observerOptions);
+
 document.querySelectorAll('.fade-in').forEach((element) => { observer.observe(element); });
